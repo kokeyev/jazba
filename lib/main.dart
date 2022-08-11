@@ -45,9 +45,12 @@ class _MyAppState extends State<MyApp> {
           });
         },
       ),
-      title: Text(
+      title: FittedBox(
+        fit: BoxFit.fitWidth,
+      child: Text(
         'Таңдаған жазбалардың саны: $cnt',
         textAlign: TextAlign.center,
+      ),
       ),
       centerTitle: true,
       backgroundColor: Colors.lightBlue,
