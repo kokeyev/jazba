@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       title: FittedBox(
         fit: BoxFit.fitWidth,
       child: Text(
-        'Таңдаған жазбалардың саны: $cnt',
+        'Таңдаған жазбалар: $cnt',
         textAlign: TextAlign.center,
       ),
       ),
