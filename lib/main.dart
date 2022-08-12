@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:edu_flutter/Settings.dart';
 import 'package:edu_flutter/create.dart';
 import 'package:edu_flutter/edit.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +59,15 @@ class _MyAppState extends State<MyApp> {
       title: const Text('Jazba'),
       backgroundColor: Colors.lightBlue,
       centerTitle: true,
+      actions: [
+        IconButton(icon: const Icon(Icons.settings),
+          onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+          },
+          iconSize: 25,
+          padding: const EdgeInsets.only(right: 20),
+        )
+      ],
     );
     FloatingActionButton deleteButton = FloatingActionButton(
       backgroundColor: Colors.red,
@@ -106,6 +115,7 @@ class _MyAppState extends State<MyApp> {
         appBar: (isSelected == false) ? mainAppBar : secondAppBar,
         body: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              // 130
                 crossAxisCount: 2, mainAxisSpacing: 10, mainAxisExtent: 130),
             itemCount: _list.length,
             itemBuilder: (context, index) {
@@ -173,6 +183,7 @@ class _MyAppState extends State<MyApp> {
                       Text(
                         add3points(_list[index].title),
                         style: const TextStyle(
+                          // 18. 25
                             fontWeight: FontWeight.bold, fontSize: 18),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -181,6 +192,7 @@ class _MyAppState extends State<MyApp> {
                       Text(
                         add3points(_list[index].text),
                         style: const TextStyle(
+                          // 15. 20
                             fontWeight: FontWeight.normal, fontSize: 15),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -188,6 +200,7 @@ class _MyAppState extends State<MyApp> {
                       const Padding(padding: EdgeInsets.only(bottom: 18)),
                       Text(dateFormat(_list[index].dateTime),
                           style: const TextStyle(
+                            // 13. 17
                               fontWeight: FontWeight.normal, fontSize: 13),
                           overflow: TextOverflow.ellipsis),
                     ],
