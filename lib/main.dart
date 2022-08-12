@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:edu_flutter/Settings.dart';
 import 'package:edu_flutter/create.dart';
 import 'package:edu_flutter/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   runApp(MaterialApp(
@@ -60,9 +61,9 @@ class _MyAppState extends State<MyApp> {
       backgroundColor: Colors.lightBlue,
       centerTitle: true,
       actions: [
-        IconButton(icon: const Icon(Icons.settings),
+        IconButton(icon: const Icon(Icons.question_mark_sharp),
           onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+          showAlertDialog();
           },
           iconSize: 25,
           padding: const EdgeInsets.only(right: 20),
@@ -218,6 +219,35 @@ class _MyAppState extends State<MyApp> {
                 child: const Icon(Icons.add),
               ),
       ),
+    );
+  }
+
+
+  void showAlertDialog() {
+    AlertDialog alert = AlertDialog(
+      content: const Text("Егер қате тапсаңыз немесе ұсынысыңыз болса, маған телеграмға жазуға өтінемін"),
+      actions: [
+        TextButton(
+          child: const Text("Қайту"),
+          onPressed:  () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+        ),
+        Link(
+          target: LinkTarget.blank,
+            uri: Uri.parse('https://t.me/kokeyevn'),
+            builder: (context, followLink) => ElevatedButton(
+                onPressed: followLink,
+                child: const Text('Жазу')
+            )
+        ),
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 

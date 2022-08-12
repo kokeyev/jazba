@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.edu_flutter">
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
         android:label="Jazba"
         android:name="${applicationName}"
@@ -30,5 +31,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+   </application>
 </manifest>
